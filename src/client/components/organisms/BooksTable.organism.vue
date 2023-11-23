@@ -1,15 +1,25 @@
 <template>
-  <Table :columns="columns" :rows="rows" spacing-adjust="1rem">
-    <template v-for="column in columns" #[column.key]="{ row }">
-      <template v-if="column.key === 'buyOn'">
-        <div class="flex flex-col gap-1">
-          <LinkAtom href="google.com">Google</LinkAtom>
-          <LinkAtom href="google.com">Amazon</LinkAtom>
-        </div>
+  <div class="flex flex-col gap-8">
+    <Table
+      :columns="columns"
+      :rows="rows"
+      :spacing-adjust="spaceAdjust"
+      :on-row-click="handleButtonClick"
+    >
+      <template v-for="column in columns" #[column.key]="{ row }">
+        <template v-if="column.key === 'title'">
+          <Book :imgSrc="row.imgSrc" :title="row.title" :author="row.author" />
+        </template>
+        <template v-else-if="column.key === 'buyOn'">
+          <div class="flex flex-col gap-1">
+            <LinkAtom href="google.com">Google</LinkAtom>
+            <LinkAtom href="google.com">Amazon</LinkAtom>
+          </div>
+        </template>
       </template>
-    </template>
-  </Table>
-  <Pagination :items="10" class="self-center" />
+    </Table>
+    <Pagination :items="10" class="self-center" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -20,11 +30,18 @@ import { useBookStore } from '@/stores/book.store'
 import ActionButton from '@/components/atoms/ActionButton.atom.vue'
 import LinkAtom from '@/components/atoms/Link.atom.vue'
 
+import Book from '@/components/molecules/Book.molecule.vue'
 import Pagination from '@/components/molecules/Pagination.molecule.vue'
 import Table from '@/components/molecules/Table.molecule.vue'
 
 export default defineComponent({
-  components: { Table, ActionButton, Pagination, LinkAtom },
+  components: { Table, ActionButton, Pagination, LinkAtom, Book },
+  props: {
+    spaceAdjust: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       columns: [
@@ -37,13 +54,19 @@ export default defineComponent({
         {
           id: 0,
           title: 'title',
+          author: 'Author Name',
+          imgSrc:
+            'https://books.google.bg/books/publisher/content?id=25AEAwAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U2zmbTUIMO0KzHIUYckrQoXrNOczw&w=1280',
           published: 'helo',
           rating: 'Koko',
           buyOn: '-',
         },
         {
           id: 1,
-          title: 'tit12211le',
+          title: 'title',
+          author: 'Author Name',
+          imgSrc:
+            'https://books.google.bg/books/publisher/content?id=25AEAwAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U2zmbTUIMO0KzHIUYckrQoXrNOczw&w=1280',
           published: 'heasdasdasdlo',
           rating: 'Koko333',
           buyOn: '-',
@@ -51,6 +74,9 @@ export default defineComponent({
         {
           id: 2,
           title: 'title',
+          author: 'Author Name',
+          imgSrc:
+            'https://books.google.bg/books/publisher/content?id=25AEAwAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U2zmbTUIMO0KzHIUYckrQoXrNOczw&w=1280',
           published: 'helo',
           rating: 'Koko222',
           buyOn: '-',

@@ -10,7 +10,7 @@
           :key="column.key"
           :class="[
             !index ? 'w-auto md:w-[300px] lg:w-[500px]' : '',
-            'text-left text-gray-400 dark:text-slate-300 text-xs font-semibold py-4 px-2',
+            'text-left text-gray-400 dark:text-slate-300 text-xs font-bold py-4 px-2',
           ]"
           :style="getSpacingFixTable('padding')"
         >
@@ -22,7 +22,10 @@
       <tr
         v-for="row in rows"
         :key="row.id"
-        class="odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07]"
+        :class="[
+          'odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07]',
+          onRowClick ? 'cursor-pointer' : '',
+        ]"
         @click="onRowClick?.(row)"
       >
         <td
@@ -30,7 +33,7 @@
           :key="column.key"
           :data-label="column.label.toUpperCase()"
           :style="getSpacingFixTable('padding')"
-          class="flex flex-col gap-1 my-4 before:content-[attr(data-label)] before:block before:text-gray-400 before:dark:text-gray-200 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
+          class="flex flex-col gap-3 my-4 font-normal before:content-[attr(data-label)] before:block before:text-slate-500 before:dark:text-slate-400 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
         >
           <slot :name="column.key" :row="row">
             {{ row[column.key] }}

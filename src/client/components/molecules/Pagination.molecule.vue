@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row gap-2">
+  <div class="flex flex-row gap-2 dark:text-slate-400">
     <button @click="prevPage" :disabled="currentPage === 1" class="disabled:opacity-40">
       <font-awesome-icon icon="fa-solid fa-angle-left" />
     </button>

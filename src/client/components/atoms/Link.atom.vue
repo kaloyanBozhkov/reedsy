@@ -1,5 +1,7 @@
 <template>
-  <a :href="href" class="text-secondary font-semibold hover:text-secondary-200"><slot /></a>
+  <a target="_blank" :href="href" class="text-secondary font-semibold hover:text-secondary-200"
+    ><slot
+  /></a>
 </template>
 
 <script lang="ts">
