@@ -10,7 +10,7 @@
     },
     "types": ["cypress"]
   },
-  "include": ["./env.d.ts", "src/**/*.ts", "src/client/**/*.vue", "./cypress"],
+  "include": ["./env.d.ts", "src/**/*.ts", "src/client/**/*.vue", "./cypress", "./prisma"],
   "ts-node": {
     "compilerOptions": {
       "module": "ES2015"
