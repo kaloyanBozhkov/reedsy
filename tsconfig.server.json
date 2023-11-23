@@ -1,0 +1,18 @@
+{
+ "compilerOptions": {
+  "lib": ["es2023"],
+  "module": "ESNext",
+  "target": "es2022",
+  "strict": true,
+  "skipLibCheck": true,
+  "forceConsistentCasingInFileNames": true,
+  "moduleResolution": "node16",
+  "types": ["node", "bun-types"],
+  "outDir": "./dist/server"
+ },
+ "extends": "./tsconfig.json",
+ "include": ["./src/server"],
+ "ts-node": {
+  "esm": true
+ }
+}

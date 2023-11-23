@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/client/*"],
+      "~/*": ["src/server/*"],
+      "common/*": ["src/common/*"]
+    },
+    "types": ["cypress"]
+  },
+  "include": ["./env.d.ts", "src/**/*.ts", "src/client/**/*.vue", "./cypress"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "ES2015"
+    }
+  }
+}

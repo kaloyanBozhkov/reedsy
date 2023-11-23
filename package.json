@@ -1,0 +1,68 @@
+{
+  "name": "reedsy",
+  "type": "module",
+  "scripts": {
+    "build:server": "tsc --project tsconfig.server.json",
+    "build:client": "vite build",
+    "dev:server": "nodemon",
+    "dev:client": "vite",
+    "test": "cypress run",
+    "type_check": "vue-tsc --noEmit",
+    "eslint_check": "eslint",
+    "prettier_check": "prettier --check 'src/**/*.{js,*.js,ts,*.ts,vue,*.vue}'",
+    "check_all": "bun run prettier_check && bun run eslint_check && bun run type_check",
+    "eslint_fix": "eslint --fix",
+    "prettier_fix": "prettier --write 'src/**/*.{js,*.js,ts,*.ts,vue,*.vue}'",
+    "fix_all": "bun run prettier_fix && bun run eslint_fix",
+    "pre-commit": "lint-staged",
+    "cypress": "cypress run --config-file './cypress.config.ts' --browser chrome",
+    "cypress:interactive": "cypress open --config-file './cypress.config.ts'"
+  },
+  "lint-staged": {
+    "src/**/*.{js,*.js,ts,*.ts,tsx,*.tsx,json,*.scss.d.ts,.scss.d.ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/vue": "^8.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "@vue/tsconfig": "^0.4.0",
+    "autoprefixer": "^10.4.16",
+    "bun-types": "latest",
+    "concurrently": "^8.2.2",
+    "cypress": "^13.6.0",
+    "eslint": "^8.54.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-vue": "^9.18.1",
+    "nodemon": "^3.0.1",
+    "postcss": "^8.4.31",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "tailwindcss": "^3.3.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2",
+    "vite": "5.0.2",
+    "vite-tsconfig-paths": "latest",
+    "vue-tsc": "^1.8.22"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5",
+    "vue-zustand": "^0.6.0",
+    "zod": "^3.22.4",
+    "zustand": "^4.4.6"
+  }
+}
