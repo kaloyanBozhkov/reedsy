@@ -1,8 +1,8 @@
 <template>
-  <div :class="`w-full h-full ${darkMode ? 'dark' : 'light'}`">
+  <MainLayout>
     <Header />
     <router-view></router-view>
-  </div>
+  </MainLayout>
 </template>
 
 <script lang="ts">
@@ -12,20 +12,9 @@ import { useThemeStore } from '@/stores/theme.store'
 
 import Header from '@/components/organisms/Header.organism.vue'
 
+import MainLayout from '@/components/layouts/Main.layout.vue'
+
 export default defineComponent({
-  components: { Header },
-
-  setup() {
-    const darkMode = useThemeStore(({ darkMode }) => darkMode)
-
-    onMounted(() => {
-      const initialize = useThemeStore(({ controls }) => controls.initialize)
-      initialize()
-    })
-
-    return {
-      darkMode,
-    }
-  },
+  components: { Header, MainLayout },
 })
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div
-    class="h-[64px] shadow-lg bg-primary-100 dark:bg-primary-dark-500 border-b-[1px] border-primary-50 dark:border-primary-dark-400"
+    class="min-h-[90px] h-[90px] shadow-lg bg-primary-100 dark:bg-primary-dark-500 border-b-[1px] border-primary-50 dark:border-primary-dark-400"
   >
     <SpacingLayout class="flex flex-row justify-between items-center pt-0 pb-0 h-full">
-      <h1 class="font-semibold text-3xl dark:text-white">Reedsy</h1>
+      <h1 class="font-semibold text-3xl text-primary dark:text-white">Reedsy</h1>
       <ActionButton :onClick="toggleDarkMode" class="flex flex-row gap-2 items-center">
         <font-awesome-icon icon="fa-regular fa-moon" v-if="darkMode" />
         <font-awesome-icon icon="fa-regular fa-sun" v-else />
