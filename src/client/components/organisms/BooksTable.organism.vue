@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col gap-8">
     <Table
+      :is-loading="isLoading"
       :columns="columns"
       :rows="rows"
       :spacing-adjust="spaceAdjust"
@@ -91,7 +92,9 @@ export default defineComponent({
   },
   setup() {
     const book = useBookStore()
-    return {}
+    return {
+      isLoading: true,
+    }
   },
 })
 </script>

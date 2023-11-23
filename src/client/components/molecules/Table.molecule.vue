@@ -20,10 +20,26 @@
     </thead>
     <tbody>
       <tr
+        v-if="isLoading"
+        v-for="(_, idx) in Array(rowsLoading).fill(null)"
+        class="odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07]"
+      >
+        <td
+          v-for="column in columns"
+          :key="`${column.key}-${idx}`"
+          :data-label="column.label.toUpperCase()"
+          :style="getSpacingFixTable('padding')"
+          class="flex flex-col gap-3 font-normal before:content-[attr(data-label)] before:block before:text-slate-500 before:dark:text-slate-400 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
+        >
+          <div class="animate-pulse bg-black/10 flex-1 min-h-[50px] sm:my-4" />
+        </td>
+      </tr>
+      <tr
+        v-else
         v-for="row in rows"
         :key="row.id"
         :class="[
-          'odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07]',
+          'odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07] flex flex-col gap-4 py-8 sm:py-0 sm:table-row',
           onRowClick ? 'cursor-pointer' : '',
         ]"
         @click="onRowClick?.(row)"
@@ -33,7 +49,7 @@
           :key="column.key"
           :data-label="column.label.toUpperCase()"
           :style="getSpacingFixTable('padding')"
-          class="flex flex-col gap-3 my-4 font-normal before:content-[attr(data-label)] before:block before:text-slate-500 before:dark:text-slate-400 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
+          class="flex flex-col gap-2 font-normal before:content-[attr(data-label)] before:block before:text-slate-500 before:dark:text-slate-400 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
         >
           <slot :name="column.key" :row="row">
             {{ row[column.key] }}
@@ -80,6 +96,14 @@ export default defineComponent({
     onRowClick: {
       type: Function as PropType<(row: TableRow) => void>,
       default: undefined,
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+    rowsLoading: {
+      type: Number,
+      default: 5,
     },
   },
   computed: {

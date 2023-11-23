@@ -20,7 +20,7 @@ export const useThemeStore = create<ThemeStore>((set) => ({
         darkMode: isDarkMode,
       })
     },
-    toggleDarkMode: (darkMode) => {
+    toggleDarkMode: () => {
       set((prev) => {
         const darkMode = !prev.darkMode
 
