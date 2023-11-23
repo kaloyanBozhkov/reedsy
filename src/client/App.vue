@@ -1,7 +1,11 @@
 <template>
   <MainLayout>
-    <Header />
-    <router-view></router-view>
+    <template #header>
+      <Header />
+    </template>
+    <template #main>
+      <router-view></router-view>
+    </template>
   </MainLayout>
 </template>
 
