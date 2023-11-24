@@ -52,10 +52,9 @@
           class="flex flex-col gap-2 font-normal before:content-[attr(data-label)] before:block before:text-slate-500 before:dark:text-slate-400 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
         >
           <slot :name="column.key" :row="row">
-            {{ row[column.key] }}
+            {{ row[column.key] instanceof Date ? formatDate(row[column.key]) : row[column.key] }}
           </slot>
         </td>
-        <slot :name="`${row.id}-expanded`" />
       </tr>
     </tbody>
   </table>
@@ -65,6 +64,8 @@
 // @TODO generics wiht defineComponent seem to be lacking still?
 // https://blog.vuejs.org/posts/vue-3-3#generic-components
 import { PropType, defineComponent } from 'vue'
+
+import { formatDate } from 'common/utils'
 
 interface TableColumn {
   key: string | number
@@ -118,6 +119,9 @@ export default defineComponent({
         }
       }
     },
+  },
+  methods: {
+    formatDate,
   },
 })
 </script>

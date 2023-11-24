@@ -8,6 +8,56 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Author {
+  id String @id @default(uuid()) @db.VarChar(36)
+
+  name  String
+  books Book[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("author")
+}
+
 model Book {
-  id String @unique
+  id          String   @id @default(uuid()) @db.VarChar(36)
+  title       String
+  img         String
+  rating      Float
+  summary     String   @db.LongText()
+  publishedOn DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  links Link[]
+
+  author   Author? @relation(fields: [authorId], references: [id])
+  authorId String? @db.VarChar(36)
+
+  @@index([authorId, id])
+  @@map("book")
+}
+
+enum DISTRIBUTOR {
+  AMAZON
+  I_BOOKS
+  PLAY_STORE
+}
+
+model Link {
+  id String @id @default(uuid()) @db.VarChar(36)
+
+  distributor DISTRIBUTOR
+  href        String      @db.LongText()
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  Book   Book?   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  bookId String? @db.VarChar(36)
+
+  @@index([id, bookId, distributor])
+  @@map("link")
 }

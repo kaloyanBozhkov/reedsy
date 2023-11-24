@@ -1,5 +1,9 @@
-import { ApiResponse, Book } from 'common/types'
+import { BooksSchema, PaginatedResponseSchema } from 'common/schemas'
 import { getBaseUrl } from 'common/utils'
+import SuperJSON from 'superjson'
 
-export const getBooksFetcher = (skip: number, take = 5): Promise<ApiResponse<Book[]>> =>
-  fetch(`${getBaseUrl()}/api/books?skip=${skip}&take=${take}`).then((response) => response.json())
+export const getBooksFetcher = (skip: number, take = 5) =>
+  fetch(`${getBaseUrl(false)}/api/books/get-all?skip=${skip}&take=${take}`)
+    .then((response) => response.json())
+    .then(SuperJSON.deserialize)
+    .then(PaginatedResponseSchema(BooksSchema).parse)

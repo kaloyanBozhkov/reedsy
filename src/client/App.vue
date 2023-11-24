@@ -10,9 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
-
-import { useThemeStore } from '@/stores/theme.store'
+import { defineComponent } from 'vue'
 
 import Header from '@/components/organisms/Header.organism.vue'
 

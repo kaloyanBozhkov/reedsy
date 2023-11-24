@@ -10,7 +10,7 @@
     >
       <template v-for="column in columns" #[column.key]="{ row }">
         <template v-if="column.key === 'title'">
-          <Book :imgSrc="row.imgSrc" :title="row.title" :author="row.author" />
+          <Book :imgSrc="row.img" :title="row.title" :author="row.author" />
         </template>
         <template v-else-if="column.key === 'buyOn'">
           <div class="flex flex-col gap-1">
@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 
 import ActionButton from '@/components/atoms/ActionButton.atom.vue'
 import DotsLoader from '@/components/atoms/DotsLoader.atom.vue'
@@ -56,7 +56,7 @@ export default defineComponent({
     return {
       columns: [
         { key: 'title', label: 'Title' },
-        { key: 'published', label: 'Published' },
+        { key: 'publishedOn', label: 'Published' },
         { key: 'rating', label: 'Rating' },
         { key: 'buyOn', label: 'Buy On' },
       ],
@@ -73,12 +73,15 @@ export default defineComponent({
     const { isError, data, error, isLoading, refetch } = useQuery({
       queryKey: ['books'],
       queryFn: () => getBooksFetcher(currentPage.value, booksPerPage),
+      enabled: true,
     })
 
     const handlePageChange = (page: number) => {
       currentPage.value = page
       refetch()
     }
+
+    console.log(data.value)
 
     return {
       isLoading,
@@ -87,8 +90,8 @@ export default defineComponent({
       error,
       handlePageChange,
       booksPerPage,
-      rows: data?.value?.data,
-      total: data?.value?.total ?? 0,
+      rows: data.value?.data ?? [],
+      total: data.value?.total ?? 0,
     }
   },
 })
