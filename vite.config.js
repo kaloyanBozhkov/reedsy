@@ -8,6 +8,11 @@ export default defineConfig({
   build: {
     outDir: 'dist/client',
   },
+  resolve: {
+    alias: {
+      '.prisma/client/index-browser': './node_modules/.prisma/client/index-browser.js',
+    },
+  },
   plugins: [
     tsconfigPaths({
       projects: ['./tsconfig.client.json', './tsconfig.json'],
