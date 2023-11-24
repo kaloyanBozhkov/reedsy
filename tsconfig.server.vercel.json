@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "outDir": "./api"
+  },
+  "extends": "./tsconfig.server.json"
+}
