@@ -4,9 +4,10 @@
   "scripts": {
     "build:server": "tsc --project tsconfig.server.json",
     "build:client": "vite build",
+    "build:both": "concurrently \"bun run build:server\" \"bun run build:client\"",
     "dev:server": "tsx --watch --tsconfig tsconfig.server.json ./src/server/index.ts",
     "dev:client": "vite",
-    "dev:both": "concurrently \"nodemon\" \"vite\"",
+    "dev:both": "concurrently \"bun dev:server\" \"bun dev:client\"",
     "test": "cypress run",
     "type_check": "vue-tsc --noEmit",
     "eslint_check": "eslint",
@@ -16,8 +17,9 @@
     "prettier_fix": "prettier --write 'src/**/*.{js,*.js,ts,*.ts,vue,*.vue}'",
     "fix_all": "bun run prettier_fix && bun run eslint_fix",
     "pre-commit": "lint-staged",
-    "cypress": "cypress run --config-file './cypress.config.ts' --browser chrome",
-    "cypress:interactive": "cypress open --config-file './cypress.config.ts'",
+    "cypress": "cypress run --config-file './cypress/cypress.config.mjs' --browser chrome",
+    "cypress:watch": "cypress run --config-file './cypress/cypress.config.mjs' --browser chrome --watch",
+    "cypress:interactive": "cypress open --config-file './cypress/cypress.config.mjs'",
     "postinstall": "bun x prisma generate"
   },
   "lint-staged": {

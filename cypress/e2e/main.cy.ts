@@ -1,9 +1,11 @@
-/// <reference types="cypress" />
-
-const PORT = process.env.PORT || 5173
+import { URL } from './utils'
 
 describe('Test main', () => {
   beforeEach(() => {
-    cy.visit(`http://localhost:${PORT}`)
+    cy.visit(URL)
+  })
+
+  it('should load books', () => {
+    cy.contains('span', 'Page 1 of 515')
   })
 })

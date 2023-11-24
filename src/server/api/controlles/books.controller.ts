@@ -1,8 +1,6 @@
-import { BookInfoSchema } from './../../../common/schemas';
 import { BookInfoSchema, BooksSchema, PaginatableSchema } from 'common/schemas'
 import { Request, Response } from 'express'
-import SuperJSON from 'superjson'
-import { ZodError, z } from 'zod'
+import { z } from 'zod'
 
 import { prisma } from '~/prisma'
 import { BOOK_INFO_SELECT, BOOK_SELECT } from '~/selectors'
@@ -22,7 +20,7 @@ export default class BooksController {
       ])
       const data = books.map((b) => ({
           ...b,
-          author: b.author.name,
+          author: b.author?.name ?? '-',
         })),
         resp = {
           data: BooksSchema.parse(data),
@@ -44,7 +42,7 @@ export default class BooksController {
 
       return BookInfoSchema.parse({
         ...resp,
-        author: resp.author.name
+        author: resp.author?.name ?? '-',
       })
     })
   }
