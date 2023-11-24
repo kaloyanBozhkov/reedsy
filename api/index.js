@@ -12,5 +12,4 @@ fs.readdir(parentDirectory, (err, files) => {
   console.log('Files in the parent directory:', files)
 })
 
-import app from '../src/server/index'
-export default app
+export default {}
