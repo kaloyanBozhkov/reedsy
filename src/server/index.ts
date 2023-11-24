@@ -16,3 +16,6 @@ app.use('/api/books', booksRouter)
 app.listen(port, () => {
   console.log(`Server is running on port ${port}!`)
 })
+
+// export for vercel api
+export default app
