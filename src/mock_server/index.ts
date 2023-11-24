@@ -1,14 +1,9 @@
-import cors from 'cors'
-import dotenv from 'dotenv'
 import express from 'express'
 
-dotenv.config()
 const app = express()
 const port = process.env.PORT ?? process.env.VITE_PORT ?? 3000
 
 console.log(port)
-
-app.use(cors())
 
 const router = express.Router()
 
