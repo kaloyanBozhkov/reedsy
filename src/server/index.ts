@@ -6,11 +6,11 @@ import booksRouter from '~/api/routes/books.router'
 
 dotenv.config()
 const app = express()
-const port = process.env.VITE_PORT || 3000
+const port = process.env.PORT || 3000
 
 app.use(cors())
 
-// @TODO if app grows add other useful middleware
+// @TODO if app grows add things like useful middleware
 app.use('/api/books', booksRouter)
 
 app.listen(port, () => {

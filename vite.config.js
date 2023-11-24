@@ -19,6 +19,8 @@ export default defineConfig({
     EnvironmentPlugin({
       DATABASE_URL: undefined,
       NODE_ENV: 'development',
+      // needed to seed db in prod
+      PUBLIC_DOMAIN: null,
     }),
     tsconfigPaths({
       projects: ['./tsconfig.client.json', './tsconfig.json'],
