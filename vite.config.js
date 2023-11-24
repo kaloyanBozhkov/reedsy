@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import EnvironmentPlugin from 'vite-plugin-environment'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 import vue from '@vitejs/plugin-vue'
@@ -15,6 +16,10 @@ export default defineConfig({
     },
   },
   plugins: [
+    EnvironmentPlugin({
+      DATABASE_URL: undefined,
+      NODE_ENV: 'development',
+    }),
     tsconfigPaths({
       projects: ['./tsconfig.client.json', './tsconfig.json'],
     }),
