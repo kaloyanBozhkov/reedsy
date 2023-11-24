@@ -1,7 +1,7 @@
-import { BooksSchema, PaginatableSchema } from 'common/schemas'
+import { BookInfoSchema, BooksSchema, PaginatableSchema } from 'common/schemas'
 import { Request, Response } from 'express'
 import SuperJSON from 'superjson'
-import { ZodError } from 'zod'
+import { ZodError, z } from 'zod'
 
 import { prisma } from '~/prisma'
 import { BOOK_SELECT } from '~/selectors'
@@ -28,6 +28,22 @@ export default class BooksController {
           total,
         }
       return resp
+    })
+  }
+  static async getBookInfo(req: Request, res: Response) {
+    geenricHandler(res, async () => {
+      const QuerySchema = z.object({ id: z.string().uuid() })
+      const { id } = QuerySchema.parse(req.query)
+      const { summary } = await prisma.book.findFirstOrThrow({
+        where: {
+          id,
+        },
+        select: {
+          summary: true,
+        },
+      })
+
+      return { summary }
     })
   }
 }

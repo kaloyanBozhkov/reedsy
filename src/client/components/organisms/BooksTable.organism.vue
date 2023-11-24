@@ -31,7 +31,7 @@
       <template #[expandedRowId]="{ row }">
         <tr class="relative w-full">
           <div class="flex w-full">
-            {{ row.id }}
+            <BookSummary :book-id="row.id" />
           </div>
         </tr>
       </template>
@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRefs, watchEffect } from 'vue'
+import { defineComponent, ref, toRefs } from 'vue'
 
 import type { Book as BookType } from 'common/types'
 
@@ -60,13 +60,24 @@ import ErrorMsg from '@/components/molecules/ErrorMsg.molecule.vue'
 import Pagination from '@/components/molecules/Pagination.molecule.vue'
 import Table from '@/components/molecules/Table.molecule.vue'
 
-import { getBooksFetcher } from '@/services/books'
+import { getBooks } from '@/services/books'
 import { BUY_ON } from '@/utils/constants'
 import { DISTRIBUTOR } from '@prisma/client'
 import { useQuery } from '@tanstack/vue-query'
 
+import BookSummary from './BookSummary.organism.vue'
+
 export default defineComponent({
-  components: { Table, ActionButton, Pagination, LinkAtom, Book, DotsLoader, ErrorMsg },
+  components: {
+    Table,
+    ActionButton,
+    Pagination,
+    LinkAtom,
+    Book,
+    DotsLoader,
+    ErrorMsg,
+    BookSummary,
+  },
   props: {
     spaceAdjust: {
       type: String,
@@ -102,7 +113,7 @@ export default defineComponent({
     const currentPage = ref(1)
     const { isError, data, error, isFetching, refetch } = useQuery({
       queryKey: ['books', currentPage.value, booksPerPage],
-      queryFn: () => getBooksFetcher(currentPage.value, booksPerPage),
+      queryFn: () => getBooks(currentPage.value, booksPerPage),
       enabled: true,
       refetchOnWindowFocus: false,
       initialData: { data: [], total: 0 },

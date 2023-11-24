@@ -18,6 +18,9 @@ export const BookSchema = z.object({
 })
 
 export const BooksSchema = z.array(BookSchema)
+export const BookInfoSchema = z.object({
+  summary: z.string(),
+})
 
 export const PaginatableSchema = z.object({
   skip: z.union([z.number(), z.string()]),
