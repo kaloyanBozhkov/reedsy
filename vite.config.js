@@ -17,11 +17,11 @@ export default defineConfig({
   },
   plugins: [
     EnvironmentPlugin({
-      DATABASE_URL: undefined,
-      NODE_ENV: 'development',
       // needed to seed db in prod
+      DATABASE_URL: undefined,
       PUBLIC_DOMAIN: null,
-      PORT: null,
+      NODE_ENV: 'development',
+      PORT: 3000,
     }),
     tsconfigPaths({
       projects: ['./tsconfig.client.json', './tsconfig.json'],
