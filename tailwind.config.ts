@@ -63,6 +63,32 @@ export default {
         'main-back-light':
           'linear-gradient(0deg, rgba(223,216,206,1) 0%, rgba(244,241,237,1) 100%)',
       },
+      keyframes: {
+        'scale-in': {
+          '0%': {
+            transform: 'scale(0)',
+          },
+          '100%': {
+            transform: 'scale(100%)',
+          },
+        },
+        'scale-out': {
+          '0%': {
+            transform: 'scale(100%)',
+          },
+          '100%': {
+            transform: 'scale(0)',
+          },
+        },
+        'move-24px': {
+          '0%': {
+            transform: 'translate(0, 0)',
+          },
+          '100%': {
+            transform: 'translate(24px, 0)',
+          },
+        },
+      },
     },
   },
   plugins: [typography, aspectRatio],
