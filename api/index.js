@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const parentDirectory = path.resolve(import.meta.dir, '..')
+const parentDirectory = path.resolve(__dirname, '..')
 
 fs.readdir(parentDirectory, (err, files) => {
   if (err) {
