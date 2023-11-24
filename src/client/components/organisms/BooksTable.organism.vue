@@ -2,8 +2,9 @@
   <template v-if="error">
     <ErrorMsg :on-action="refetch">
       Something went wrong!
-      <template v-if="isLoading" #action>
-        <DotsLoader for-btn size="sm" />
+      <template #action>
+        Retry
+        <DotsLoader v-if="isLoading" for-btn size="sm" />
       </template>
     </ErrorMsg>
   </template>
@@ -29,10 +30,8 @@
         </template>
       </template>
       <template #[expandedRowId]="{ row }">
-        <tr class="relative w-full">
-          <div class="flex w-full">
-            <BookSummary :book-id="row.id" />
-          </div>
+        <tr class="relative w-full h-[350px] sm:h-[250px]">
+          <BookSummary :book-id="row.id" class="absolute inset-0" />
         </tr>
       </template>
     </Table>

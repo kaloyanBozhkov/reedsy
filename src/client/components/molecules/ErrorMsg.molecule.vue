@@ -14,17 +14,17 @@
 </template>
 
 <script lang="ts">
-import { PropType, defineComponent } from 'vue'
+import { PropType } from 'vue'
 
 import ActionButton from '../atoms/ActionButton.atom.vue'
 import Card from '../atoms/Card.atom.vue'
 
-export default defineComponent({
+export default {
   components: { Card, ActionButton },
   props: {
     onAction: {
       type: Function as PropType<() => void>,
     },
   },
-})
+}
 </script>

@@ -8,17 +8,15 @@
       />
       <div class="absolute inset-0 animate-pulse bg-black/10 w-full h-full" />
     </div>
-    <div class="flex flex-col gpa-5">
-      <h1 class="text-md font-semibold dark:text-slate-400 text-slate-700">{{ title }}</h1>
-      <h2 class="text-md font-light dark:text-slate-400 text-slate-700">{{ author }}</h2>
-    </div>
+    <BookInfo :title="title" :author="author" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import BookInfo from '@/components/atoms/BookInfo.atom.vue'
 
-export default defineComponent({
+export default {
+  components: { BookInfo },
   props: {
     imgSrc: {
       type: String,
@@ -33,5 +31,5 @@ export default defineComponent({
       required: true,
     },
   },
-})
+}
 </script>

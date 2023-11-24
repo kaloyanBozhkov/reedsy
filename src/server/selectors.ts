@@ -18,3 +18,13 @@ export const BOOK_SELECT = {
     },
   },
 }
+
+export const BOOK_INFO_SELECT = {
+  summary: true,
+  title: true,
+  author: {
+    select: {
+      name: true,
+    },
+  },
+}

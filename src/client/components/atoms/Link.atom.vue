@@ -5,14 +5,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
+export default {
   props: {
     href: {
       type: String,
       required: true,
     },
   },
-})
+}
 </script>
