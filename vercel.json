@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "builds": {
-    "src": "/dist/server/server/index.js",
-    "use": "@now/node"
-  },
+  "builds": [
+    {
+      "src": "/dist/server/server/index.js",
+      "use": "@now/node"
+    }
+  ],
   "rewrites": [{ "source": "/api/(.*)", "destination": "/dist/server/server/index.js" }]
 }
