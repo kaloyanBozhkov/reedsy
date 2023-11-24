@@ -1,3 +1,3 @@
-import app from '../src/mock_server/index.js'
+import app from '../src/server/index'
 
 export default app
