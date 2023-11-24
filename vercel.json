@@ -2,9 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "/dist/server/server/index.js",
-      "use": "@now/node"
+      "src": "/server/index.ts",
+      "use": "@vercel/node"
     }
   ],
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/dist/server/server/index.js" }]
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/server/api" }]
 }
