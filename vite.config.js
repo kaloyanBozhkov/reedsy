@@ -17,6 +17,7 @@ export default defineConfig({
   },
   plugins: [
     EnvironmentPlugin({
+      PORT: null,
       DATABASE_URL: undefined,
       NODE_ENV: 'development',
       // needed to seed db in prod

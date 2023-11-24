@@ -8,6 +8,7 @@ export const getBaseUrl = (useRelativeOnFE = true) => {
       ? process.env?.PUBLIC_DOMAIN
       : `https://${process.env?.PUBLIC_DOMAIN}`
 
+  console.log(process.env)
   return `http://localhost:${process.env?.PORT ?? 5173}`
 }
 
