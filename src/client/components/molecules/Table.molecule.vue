@@ -31,7 +31,7 @@
           :style="getSpacingFixTable('padding')"
           class="flex flex-col gap-3 font-normal before:content-[attr(data-label)] before:block before:text-slate-500 before:dark:text-slate-400 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
         >
-          <div class="animate-pulse bg-black/10 flex-1 min-h-[50px] sm:my-4" />
+          <div class="animate-pulse bg-black/10 flex-1 min-h-[50px] sm:my-10" />
         </td>
       </tr>
       <tr

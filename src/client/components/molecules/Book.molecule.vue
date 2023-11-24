@@ -10,7 +10,7 @@
     </div>
     <div class="flex flex-col gpa-5">
       <h1 class="text-md font-semibold dark:text-slate-400 text-slate-700">{{ title }}</h1>
-      <h2 class="text-md font-normal dark:text-slate-400 text-slate-700">{{ author }}</h2>
+      <h2 class="text-md font-light dark:text-slate-400 text-slate-700">{{ author }}</h2>
     </div>
   </div>
 </template>

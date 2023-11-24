@@ -26,7 +26,7 @@ export const formatRawData = (rows: DataRow[]) =>
       links: {
         amazon: `https://www.amazon.com/s?k=${search}`,
         playStore: `https://play.google.com/store/search?q=${search}&c=books&hl=en&gl=US`,
-        ...((idx % 3 || idx % 4) && { iBook: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }),
+        ...(idx % 5 && { iBook: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }),
       },
     }
   })

@@ -11,6 +11,8 @@
 </template>
 
 <script lang="ts">
+import { PropType } from 'vue'
+
 export default {
   props: {
     items: {
@@ -23,7 +25,7 @@ export default {
       default: 5,
     },
     onPageChange: {
-      type: Function,
+      type: Function as PropType<(currentPage: number) => void>,
       default() {
         console.log('page changed', this.currentPage)
       },
@@ -43,13 +45,13 @@ export default {
     nextPage() {
       if (this.currentPage < this.totalPages) {
         this.currentPage++
-        this.onPageChange()
+        this.onPageChange(this.currentPage)
       }
     },
     prevPage() {
       if (this.currentPage > 1) {
         this.currentPage--
-        this.onPageChange()
+        this.onPageChange(this.currentPage)
       }
     },
   },

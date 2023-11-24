@@ -1,6 +1,7 @@
+import '@/styles/styles.css'
+
 import { createApp } from 'vue'
 
-import '@/styles/styles.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
