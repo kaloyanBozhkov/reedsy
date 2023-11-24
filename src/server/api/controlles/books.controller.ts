@@ -27,7 +27,6 @@ export default class BooksController {
           data: BooksSchema.parse(data),
           total,
         }
-
       return resp
     })
   }

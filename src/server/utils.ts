@@ -12,6 +12,6 @@ export const geenricHandler = async <T>(res: Response, promise: () => Promise<T>
     } else {
       console.error(err)
     }
-    res.status(400).end()
+    res.status(400).json({ message: err.message }).end()
   }
 }

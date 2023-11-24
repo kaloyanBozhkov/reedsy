@@ -1,5 +1,13 @@
 <template>
-  <div class="flex flex-col gap-8">
+  <template v-if="error">
+    <ErrorMsg :on-action="refetch">
+      Something went wrong!
+      <template v-if="isLoading" #action>
+        <DotsLoader for-btn size="sm" />
+      </template>
+    </ErrorMsg>
+  </template>
+  <div v-else class="flex flex-col gap-8">
     <Table
       :is-loading="isLoading || !data.data.length"
       :rows-loading="booksPerPage"
@@ -48,6 +56,7 @@ import DotsLoader from '@/components/atoms/DotsLoader.atom.vue'
 import LinkAtom from '@/components/atoms/Link.atom.vue'
 
 import Book from '@/components/molecules/Book.molecule.vue'
+import ErrorMsg from '@/components/molecules/ErrorMsg.molecule.vue'
 import Pagination from '@/components/molecules/Pagination.molecule.vue'
 import Table from '@/components/molecules/Table.molecule.vue'
 
@@ -57,7 +66,7 @@ import { DISTRIBUTOR } from '@prisma/client'
 import { useQuery } from '@tanstack/vue-query'
 
 export default defineComponent({
-  components: { Table, ActionButton, Pagination, LinkAtom, Book, DotsLoader },
+  components: { Table, ActionButton, Pagination, LinkAtom, Book, DotsLoader, ErrorMsg },
   props: {
     spaceAdjust: {
       type: String,

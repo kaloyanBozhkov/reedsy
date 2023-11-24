@@ -1,7 +1,7 @@
 <template>
   <div
     class="relative inline h-[13px] w-[80px] z-0 -ml-1 -mr-1"
-    :class="{ '-m-x-4 scale-70': size === 'sm' }"
+    :class="{ 'h-[25px] flex [&>*]:top-[6px]': forBtn, '-m-x-4 scale-70': size === 'sm' }"
   >
     <div
       :class="[
@@ -40,6 +40,10 @@ export default {
     dotsBg: {
       type: String,
       default: 'bg-slate-300 dark:bg-slate-500',
+    },
+    forBtn: {
+      type: Boolean,
+      default: false,
     },
   },
 }
