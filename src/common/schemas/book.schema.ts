@@ -1,4 +1,4 @@
-import { ZodTypeAny, z } from 'zod'
+import z from 'zod'
 
 import { DISTRIBUTOR } from '@prisma/client'
 
@@ -23,14 +23,3 @@ export const BookInfoSchema = z.object({
   title: z.string(),
   author: z.string(),
 })
-
-export const PaginatableSchema = z.object({
-  skip: z.union([z.number(), z.string()]),
-  take: z.union([z.number(), z.string()]),
-})
-
-export const PaginatedResponseSchema = <T extends ZodTypeAny>(zod: T) =>
-  z.object({
-    total: z.number(),
-    data: zod,
-  })

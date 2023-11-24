@@ -48,7 +48,7 @@
 <script lang="ts">
 import { defineComponent, ref, toRefs } from 'vue'
 
-import type { Book as BookType } from 'common/types'
+import type { Book as BookType } from 'common/types/types'
 
 import ActionButton from '@/components/atoms/ActionButton.atom.vue'
 import DotsLoader from '@/components/atoms/DotsLoader.atom.vue'

@@ -76,9 +76,7 @@ interface TableRowBase {
   id: string | number
 }
 
-interface TableRow extends TableRowBase {
-  [key: string | number]: any
-}
+type TableRow = TableRowBase & any
 
 export default defineComponent({
   props: {

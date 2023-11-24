@@ -12,6 +12,8 @@ export const getBaseUrl = (useRelativeOnFE = true) => {
       ? env?.PUBLIC_DOMAIN
       : `https://${env?.PUBLIC_DOMAIN}`
 
+  if (env?.BASE_URL && env.PROD) return env?.BASE_URL
+
   return `http://localhost:${env?.PORT ?? 3000}`
 }
 
