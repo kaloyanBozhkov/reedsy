@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "lib": ["es2023"],
+    "module": "CommonJS",
+    "target": "ESNext",
+    "types": ["node", "bun-types"]
+  },
+  "extends": "../tsconfig.json"
+}
