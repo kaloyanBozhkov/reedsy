@@ -17,5 +17,5 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}!`)
 })
 
-// export for vercel api
+// export for deployment
 export default app
