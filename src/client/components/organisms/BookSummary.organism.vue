@@ -4,8 +4,8 @@
       <ErrorMsg :on-action="refetch">
         Could not get book summary!
         <template #action>
-          Retry
-          <DotsLoader v-if="isLoading" for-btn size="sm" />
+          <template v-if="isLoading">Retry</template>
+          <DotsLoader v-else for-btn size="sm" />
         </template>
       </ErrorMsg>
     </template>

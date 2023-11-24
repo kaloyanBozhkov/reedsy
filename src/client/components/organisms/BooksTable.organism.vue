@@ -3,8 +3,8 @@
     <ErrorMsg :on-action="refetch">
       Something went wrong!
       <template #action>
-        Retry
-        <DotsLoader v-if="isLoading" for-btn size="sm" />
+        <template v-if="isLoading">Retry</template>
+        <DotsLoader v-else for-btn size="sm" />
       </template>
     </ErrorMsg>
   </template>
