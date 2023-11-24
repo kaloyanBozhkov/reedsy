@@ -5,10 +5,11 @@ import { ZodError } from 'zod'
 
 import { prisma } from '~/prisma'
 import { BOOK_SELECT } from '~/selectors'
+import { geenricHandler } from '~/utils'
 
 export default class BooksController {
   static async getAllBooks(req: Request, res: Response) {
-    try {
+    geenricHandler(res, async () => {
       const { skip, take } = PaginatableSchema.parse(req.query)
       const [total, books] = await prisma.$transaction([
         prisma.book.count(),
@@ -27,15 +28,7 @@ export default class BooksController {
           total,
         }
 
-      res.json(SuperJSON.serialize(resp))
-    } catch (err) {
-      if (err instanceof ZodError) {
-        console.warn(err.message)
-      } else {
-        console.error(err)
-      }
-
-      res.status(400).end()
-    }
+      return resp
+    })
   }
 }

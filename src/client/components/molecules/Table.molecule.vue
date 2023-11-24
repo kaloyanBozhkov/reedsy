@@ -34,28 +34,28 @@
           <div class="animate-pulse bg-black/10 flex-1 min-h-[50px] sm:my-10" />
         </td>
       </tr>
-      <tr
-        v-else
-        v-for="row in rows"
-        :key="row.id"
-        :class="[
-          'odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07] flex flex-col gap-4 py-8 sm:py-0 sm:table-row',
-          onRowClick ? 'cursor-pointer' : '',
-        ]"
-        @click="onRowClick?.(row)"
-      >
-        <td
-          v-for="column in columns"
-          :key="column.key"
-          :data-label="column.label.toUpperCase()"
-          :style="getSpacingFixTable('padding')"
-          class="flex flex-col gap-2 font-normal before:content-[attr(data-label)] before:block before:text-slate-500 before:dark:text-slate-400 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
+      <template v-else v-for="row in rows" :key="row.id">
+        <tr
+          :class="[
+            'odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07] flex flex-col gap-4 py-8 sm:py-0 sm:table-row',
+            onRowClick ? 'cursor-pointer' : '',
+          ]"
+          @click="onRowClick?.(row)"
         >
-          <slot :name="column.key" :row="row">
-            {{ row[column.key] instanceof Date ? formatDate(row[column.key]) : row[column.key] }}
-          </slot>
-        </td>
-      </tr>
+          <td
+            v-for="column in columns"
+            :key="column.key"
+            :data-label="column.label.toUpperCase()"
+            :style="getSpacingFixTable('padding')"
+            class="flex flex-col gap-2 font-normal before:content-[attr(data-label)] before:block before:text-slate-500 before:dark:text-slate-400 before:text-xs before:font-semibold sm:before:hidden sm:table-cell sm:py-4 sm:px-2 dark:text-slate-300"
+          >
+            <slot :name="column.key" :row="row">
+              {{ row[column.key] instanceof Date ? formatDate(row[column.key]) : row[column.key] }}
+            </slot>
+          </td>
+        </tr>
+        <slot :name="row.id" :row="row" />
+      </template>
     </tbody>
   </table>
 </template>

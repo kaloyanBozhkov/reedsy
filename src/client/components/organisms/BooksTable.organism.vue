@@ -20,6 +20,13 @@
           </div>
         </template>
       </template>
+      <template #[expandedRowId]="{ row }">
+        <tr class="relative w-full">
+          <div class="flex w-full">
+            {{ row.id }}
+          </div>
+        </tr>
+      </template>
     </Table>
     <Pagination
       v-if="data.total > 0"
@@ -32,7 +39,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, toRefs, watchEffect } from 'vue'
+
+import type { Book as BookType } from 'common/types'
 
 import ActionButton from '@/components/atoms/ActionButton.atom.vue'
 import DotsLoader from '@/components/atoms/DotsLoader.atom.vue'
@@ -66,34 +75,39 @@ export default defineComponent({
     }
   },
   methods: {
-    handleButtonClick(row) {
-      console.log(row)
+    handlePageChange(page: number) {
+      const { currentPage } = toRefs(this)
+      currentPage.value = page
+      this.refetch()
+    },
+    handleButtonClick(row: BookType) {
+      this.expandedRowId = row.id
     },
     getLinkLabel(link: DISTRIBUTOR) {
       return BUY_ON[link]
     },
   },
   setup() {
+    const expandedRowId = ref('')
     const booksPerPage = 5
     const currentPage = ref(1)
     const { isError, data, error, isFetching, refetch } = useQuery({
       queryKey: ['books', currentPage.value, booksPerPage],
       queryFn: () => getBooksFetcher(currentPage.value, booksPerPage),
       enabled: true,
+      refetchOnWindowFocus: false,
       initialData: { data: [], total: 0 },
     })
-    const handlePageChange = (page: number) => {
-      currentPage.value = page
-      refetch()
-    }
 
     return {
       isLoading: isFetching,
       isError,
       data,
       error,
-      handlePageChange,
       booksPerPage,
+      expandedRowId,
+      currentPage,
+      refetch,
     }
   },
 })
