@@ -1,12 +1,36 @@
 # reedsy
 
-To install dependencies:
+## Live at:
+
+```
+https://brilliant-queijadas-7c19dc.netlify.app/
+```
+
+## To install dependencies:
 
 ```bash
 bun install
 ```
 
-To run:
+## Setup DB:
+
+```
+docker build -t reedsy-db .
+docker run --name reedsy-db -d -p 3308:3306 reedsy-db
+docker exec -it reedsy-db mysql -u root -p
+CREATE DATABASE reedsy
+
+
+// be sure to create database and update the DATABASE_URL in .env
+// then push the db schema
+bun x prisma db push
+
+
+// seed the db with books data
+bun x prisma db seed
+```
+
+## To run:
 
 ```bash
 bun dev:server
@@ -15,12 +39,4 @@ bun dev:client
 or
 
 bun dev:both
-```
-
-# Fun Fact
-
-```
-Deploying Express API to vercel does not require building the server. Vercel reads the .js or .ts files upon request, and handles the transpilation and all that cool stuff. Because of this, do not run build for server.
-
-This means client can be deployed normally.
 ```

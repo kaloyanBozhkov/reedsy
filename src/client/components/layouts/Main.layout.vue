@@ -1,13 +1,16 @@
 <template>
   <div :class="`w-full h-full ${darkMode ? 'dark' : 'light'}`">
-    <header class="min-h-[90px] h-[90px] w-full">
-      <slot name="header" />
-    </header>
-    <main
-      class="w-full h-full bg-main-back-light dark:bg-main-back-dark flex flex-col gap-4 overflow-auto"
-    >
-      <slot name="main" />
-    </main>
+    <div class="w-full flex flex-col gap-4 overflow-auto bg-main-back-light dark:bg-main-back-dark">
+      <header class="min-h-[90px] h-[90px] w-full">
+        <slot name="header" />
+      </header>
+      <main class="w-full min-h-full flex flex-col gap-4">
+        <slot name="main" />
+      </main>
+      <footer class="w-full">
+        <slot name="footer" />
+      </footer>
+    </div>
   </div>
 </template>
 

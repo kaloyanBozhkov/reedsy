@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-full w-full shadow-lg bg-primary-100 dark:bg-primary-dark-500 border-b-[1px] border-primary-50 dark:border-primary-dark-400"
+    class="h-full w-full shadow-lg dark:bg-primary-dark-500 dark:bg-none bg-main-back-light border-b-[1px] border-primary-50 dark:border-primary-dark-400"
   >
     <SpacingLayout class="flex flex-row justify-between items-center pt-0 pb-0 h-full">
       <h1 class="font-semibold text-3xl text-primary dark:text-white">Reedsy</h1>

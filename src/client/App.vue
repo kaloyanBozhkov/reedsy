@@ -6,6 +6,9 @@
     <template #main>
       <router-view></router-view>
     </template>
+    <template #footer>
+      <Footer />
+    </template>
   </MainLayout>
 </template>
 
@@ -16,7 +19,9 @@ import Header from '@/components/organisms/Header.organism.vue'
 
 import MainLayout from '@/components/layouts/Main.layout.vue'
 
+import Footer from './components/molecules/Footer.molecule.vue'
+
 export default defineComponent({
-  components: { Header, MainLayout },
+  components: { Header, MainLayout, Footer },
 })
 </script>
