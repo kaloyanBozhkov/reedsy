@@ -29,9 +29,14 @@ export const groupByKey = (key: keyof RequestProcess, ps: RequestProcess[]) =>
   // or use lodash :)
   //_.groupBy(ps, key)
   ps.reduce(
-    (acc, p) => ({
-      ...acc,
-      [p[key]]: [...(acc[p[key]] ?? []), p],
-    }),
-    {}
+    (acc, p) => {
+      const prop = p[key] as keyof RequestProcess
+      if (prop === undefined) return acc
+      const processes = (acc[prop] ?? []) as unknown as RequestProcess[]
+      return {
+        ...acc,
+        [prop]: [...processes, p],
+      }
+    },
+    {} as Record<typeof key, RequestProcess>
   )

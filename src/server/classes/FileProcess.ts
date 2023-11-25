@@ -37,7 +37,9 @@ export default class Process {
 
   async init(operation: Operation) {
     await Process.simulateProcessing(
-      Process.PROCESSSING_TIMES[operation === 'import' ? 'import' : this.type]
+      Process.PROCESSSING_TIMES[
+        operation === 'import' ? 'import' : (this.type as keyof typeof Process.PROCESSSING_TIMES)
+      ]
     )
 
     this.state = 'finished'

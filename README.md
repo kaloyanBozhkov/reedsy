@@ -47,8 +47,10 @@ bun x prisma db seed
 ```bash
 bun dev:server
 bun dev:client
+```
 
 or
 
+```
 bun dev:both
 ```
