@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRefs } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 import type { Book as BookType } from 'common/types/types'
 
@@ -95,8 +95,7 @@ export default defineComponent({
   },
   methods: {
     handlePageChange(page: number) {
-      const { currentPage } = toRefs(this)
-      currentPage.value = page
+      this.currentPage = page
       this.refetch()
     },
     handleButtonClick(row: BookType) {
