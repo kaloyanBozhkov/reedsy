@@ -1,10 +1,20 @@
 <template>
   <div class="flex flex-row gap-2 dark:text-slate-400">
-    <button @click="prevPage" :disabled="currentPage === 1" class="disabled:opacity-40">
+    <button
+      @click="prevPage"
+      :disabled="currentPage === 1"
+      class="disabled:opacity-40"
+      aria-label="go to previous page"
+    >
       <font-awesome-icon icon="fa-solid fa-angle-left" />
     </button>
     <span>Page {{ currentPage }} of {{ totalPages }}</span>
-    <button @click="nextPage" :disabled="currentPage === totalPages" class="disabled:opacity-40">
+    <button
+      @click="nextPage"
+      :disabled="currentPage === totalPages"
+      class="disabled:opacity-40"
+      aria-label="go to next page"
+    >
       <font-awesome-icon icon="fa-solid fa-angle-right" />
     </button>
   </div>

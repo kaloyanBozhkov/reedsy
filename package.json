@@ -17,9 +17,8 @@
     "prettier_fix": "prettier --write 'src/**/*.{js,*.js,ts,*.ts,vue,*.vue}'",
     "fix_all": "bun run prettier_fix && bun run eslint_fix",
     "pre-commit": "lint-staged",
-    "cypress": "cypress run --config-file './cypress/cypress.config.mjs' --browser chrome",
-    "cypress:watch": "cypress run --config-file './cypress/cypress.config.mjs' --browser chrome --watch",
-    "cypress:interactive": "cypress open --config-file './cypress/cypress.config.mjs'",
+    "cypress": "cypress run --config-file './cypress/cypress.config.js' --browser chrome",
+    "cypress:interactive": "cypress open --config-file './cypress/cypress.config.js'",
     "postinstall": "bun x prisma generate"
   },
   "prisma": {

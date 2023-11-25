@@ -99,7 +99,7 @@ export default defineComponent({
       this.refetch()
     },
     handleButtonClick(row: BookType) {
-      this.expandedRowId = row.id
+      this.expandedRowId = this.expandedRowId === row.id ? '' : row.id
     },
     getLinkLabel(link: DISTRIBUTOR) {
       return BUY_ON[link]

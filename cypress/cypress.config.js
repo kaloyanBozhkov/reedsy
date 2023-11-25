@@ -1,11 +1,11 @@
-import { defineConfig } from 'cypress'
+import * as vite from 'vite'
 
-const PORT = 5173
+const FE_PORT = 5173
 
 // @TODO if testing on prod rework this
-export const URL = `https://localhost:${PORT}`
+export const URL = `http://localhost:${FE_PORT}`
 
-export default defineConfig({
+export default vite.defineConfig({
   projectId: 'reedsy-e2e',
   viewportHeight: 1000,
   viewportWidth: 1280,

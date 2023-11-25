@@ -1,1 +1,1 @@
-export { URL } from '../cypress.config.mjs'
+export { URL } from '../cypress.config.js'
