@@ -1,4 +1,4 @@
-describe('Test main', () => {
+describe('Test BooksTable', () => {
   beforeEach(() => {
     cy.visit('/')
   })

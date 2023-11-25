@@ -21,6 +21,7 @@ export default class BooksController {
       const data = books.map((b) => ({
           ...b,
           author: b.author?.name ?? '-',
+          rating: `${b.rating}/5`,
         })),
         resp = {
           data: BooksSchema.parse(data),

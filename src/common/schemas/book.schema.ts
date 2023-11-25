@@ -13,7 +13,7 @@ export const BookSchema = z.object({
   img: z.string(),
   publishedOn: z.date(),
   id: z.string().uuid(),
-  rating: z.number(),
+  rating: z.union([z.number(), z.string()]),
   links: z.array(BuyOnSchema),
 })
 
