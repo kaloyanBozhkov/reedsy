@@ -22,12 +22,35 @@ describe('Test /api/export', () => {
     expect(resp2.body).toEqual({
       status: 'started',
     })
+
+    const resp3 = await request(app).post('/api/export/request').send({ bookId, type: 'pdf' })
+    expect(resp3.status).toBe(200)
+    expect(resp3.body).toEqual({
+      status: 'duplicate',
+    })
   })
 
   test('It should list exports of 1 as pending then as finished', async () => {
     const resp = await request(app).get('/api/export/list')
     expect(resp.status).toBe(200)
     expect(resp.body).toMatchObject({
+      data: {
+        pending: [
+          {
+            bookId: 'e90341e1-371a-4efb-b9a9-420cdac9e9d8',
+            operation: 'export',
+            state: 'pending',
+            type: 'pdf',
+          },
+        ],
+      },
+    })
+
+    await new Promise((resolve) => setTimeout(resolve, 11000))
+
+    const resp2 = await request(app).get('/api/export/list')
+    expect(resp2.status).toBe(200)
+    expect(resp2.body).toMatchObject({
       data: {
         pending: [
           {

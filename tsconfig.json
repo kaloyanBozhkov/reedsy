@@ -7,7 +7,9 @@
       "@/*": ["src/client/*"],
       "~/*": ["src/server/*"],
       "common/*": ["src/common/*"]
-    }
+    },
+    "types": ["jest"]
   },
-  "include": ["src/**/*.ts", "src/client/**/*.vue", "./prisma", "./src/common"]
+  "include": ["src/**/*.ts", "src/client/**/*.vue", "./prisma", "./src/common"],
+  "exclude": ["src/**/*.spec.ts"]
 }
