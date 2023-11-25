@@ -20,14 +20,7 @@
     "cypress": "cypress run --config-file './cypress/cypress.config.mjs' --browser chrome",
     "cypress:watch": "cypress run --config-file './cypress/cypress.config.mjs' --browser chrome --watch",
     "cypress:interactive": "cypress open --config-file './cypress/cypress.config.mjs'",
-    "postinstall": "bun x prisma generate",
-    "precommit": "bun x lint-staged"
-  },
-  "lint-staged": {
-    "src/**/*.{js,*.js,ts,*.ts,json,vue,*.vue}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
+    "postinstall": "bun x prisma generate"
   },
   "prisma": {
     "schema": "prisma/schema.prisma",
