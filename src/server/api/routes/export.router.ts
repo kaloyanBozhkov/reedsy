@@ -1,10 +1,10 @@
 import express from 'express'
 
-import BooksController from '~/api/controlles/books.controller'
+import ExportsController from '~/api/controlles/exports.controller'
 
 const exportRouter = express.Router()
 
-exportRouter.post('/request', BooksController.getAllBooks)
-exportRouter.get('/list', BooksController.getAllBooks)
+exportRouter.post('/request', ExportsController.requestExport)
+exportRouter.get('/list', ExportsController.listExports)
 
 export default exportRouter

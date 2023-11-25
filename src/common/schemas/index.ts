@@ -1,6 +1,7 @@
 import { ZodTypeAny, z } from 'zod'
 
 export * from './book.schema'
+export * from './files.schema'
 
 export const PaginatableSchema = z.object({
   skip: z.union([z.number(), z.string()]),
