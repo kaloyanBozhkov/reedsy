@@ -10,10 +10,12 @@ const PORT = env?.PORT ?? 3000
 export const getBaseUrl = (useRelativeOnFE = true) => {
   if (typeof window !== 'undefined' && useRelativeOnFE) return ''
 
-  if (ENV !== 'development' && PUBLIC_DOMAIN)
-    return env?.PUBLIC_DOMAIN.includes('http') ? PUBLIC_DOMAIN : `https://${PUBLIC_DOMAIN}`
+  if (ENV === 'development') return `http://localhost:${PORT}`
 
-  return `http://localhost:${PORT}`
+  if (PUBLIC_DOMAIN)
+    return PUBLIC_DOMAIN.includes('http') ? PUBLIC_DOMAIN : `https://${PUBLIC_DOMAIN}`
+
+  return ''
 }
 
 export const formatDate = (d: Date) => `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
