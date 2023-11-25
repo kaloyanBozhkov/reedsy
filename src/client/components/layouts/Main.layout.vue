@@ -9,7 +9,7 @@
       <main class="w-full min-h-full flex flex-col gap-4">
         <slot name="main" />
       </main>
-      <footer class="w-full">
+      <footer class="w-full mt-auto">
         <slot name="footer" />
       </footer>
     </div>

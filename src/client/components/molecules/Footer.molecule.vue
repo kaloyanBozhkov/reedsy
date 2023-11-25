@@ -11,7 +11,7 @@
     </SpacingLayout>
 
     <div
-      class="absolute inset-0 bg-main-back-light dark:bg-main-back-dark -z-10 sm:rounded-3xl rounded-b-none"
+      class="absolute inset-0 bg-main-back-light dark:bg-main-back-dark -z-10 sm:rounded-3xl sm:rounded-b-none"
     />
   </div>
 </template>
