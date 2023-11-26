@@ -34,10 +34,8 @@
         </tr>
         <template v-else v-for="row in rows" :key="row.id">
           <tr
-            :class="[
-              'odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07] flex flex-col gap-4 py-8 sm:py-0 sm:table-row',
-              onRowClick ? 'cursor-pointer' : '',
-            ]"
+            class="animate-fade-up odd:bg-black/5 dark:hover:bg-black/[0.08] hover:bg-black/[0.02] hover:odd:bg-black/[0.07] flex flex-col gap-4 py-8 sm:py-0 sm:table-row"
+            :class="[onRowClick ? 'cursor-pointer' : '']"
             @click="onRowClick?.(row)"
           >
             <td

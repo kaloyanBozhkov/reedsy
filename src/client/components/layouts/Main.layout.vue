@@ -3,13 +3,13 @@
     <div
       class="w-full min-h-full flex flex-col gap-4 overflow-auto bg-main-back-light dark:bg-main-back-dark"
     >
-      <header class="min-h-[90px] h-[90px] w-full">
+      <header class="min-h-[90px] h-[90px] w-full animate-fade-down">
         <slot name="header" />
       </header>
-      <main class="w-full min-h-full flex flex-col gap-4">
+      <main class="w-full min-h-full flex flex-col gap-4 animate-fade-up">
         <slot name="main" />
       </main>
-      <footer class="w-full mt-auto">
+      <footer class="w-full mt-auto animate-fade-up">
         <slot name="footer" />
       </footer>
     </div>

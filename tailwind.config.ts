@@ -1,3 +1,5 @@
+import animations from 'tailwindcss-animated'
+
 import aspectRatio from '@tailwindcss/aspect-ratio'
 import typography from '@tailwindcss/typography'
 
@@ -91,5 +93,5 @@ export default {
       },
     },
   },
-  plugins: [typography, aspectRatio],
+  plugins: [typography, aspectRatio, animations],
 }
