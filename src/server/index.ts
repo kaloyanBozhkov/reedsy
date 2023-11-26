@@ -5,6 +5,7 @@ import express, { json } from 'express'
 import exportRouter from './api/routes/export.router'
 import importRouter from './api/routes/import.router'
 import booksRouter from '~/api/routes/books.router'
+import testRouter from '~/api/tests/clear.router'
 
 dotenv.config()
 const app = express()
@@ -25,6 +26,7 @@ app.use('/api/books', booksRouter)
  */
 app.use('/api/export', exportRouter)
 app.use('/api/import', importRouter)
+app.use('/api/test', testRouter)
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}!`)
