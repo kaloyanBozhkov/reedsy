@@ -1,7 +1,7 @@
 <template>
   <button
     @click="onClick"
-    class="py-2 px-4 text-white font-normal rounded-xl bg-primary dark:bg-primary-dark shadow-sm"
+    class="py-2 px-4 text-white font-normal rounded-xl bg-primary-300 dark:bg-primary-dark shadow-sm"
   >
     <slot />
   </button>
