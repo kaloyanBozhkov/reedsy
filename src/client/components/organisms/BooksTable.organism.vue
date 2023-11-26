@@ -30,8 +30,10 @@
         </template>
       </template>
       <template #[expandedRowId]="{ row }">
-        <tr class="relative w-full h-[350px] sm:h-[250px]">
-          <BookSummary :book-id="row.id" class="absolute inset-0" />
+        <tr>
+          <td :colspan="columns.length">
+            <BookSummary :book-id="row.id" />
+          </td>
         </tr>
       </template>
     </Table>

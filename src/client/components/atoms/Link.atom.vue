@@ -1,5 +1,9 @@
 <template>
-  <a target="_blank" :href="href" class="text-secondary font-semibold hover:text-secondary-200">
+  <a
+    target="_blank"
+    :href="href"
+    class="text-secondary font-semibold hover:text-secondary-200 w-fit"
+  >
     <slot />
   </a>
 </template>
